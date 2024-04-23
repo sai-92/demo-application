@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Push Artifact to S3') {
       steps {
-        sh 'aws s3 cp webapp/target/webapp.jar s3://demokrishnas3us'
+        sh 'aws s3 cp maven_job/target/demo-application-0.0.1-SNAPSHOT.jar s3://demokrishnas3us'
       }
     }
 //     stage('Deploy to tomcat') {
