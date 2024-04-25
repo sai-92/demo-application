@@ -17,13 +17,13 @@ pipeline {
        sh 'aws s3 cp /var/lib/jenkins/workspace/maven_job/target/demo-application-0.0.1-SNAPSHOT.jar s3://demokrishnas3us'
       }
     }
-//     stage('Deploy to tomcat') {
-//       steps {
-//         sshagent(['tomcat-server-details']) {
-//         sh 'scp -o "StrictHostKeyChecking=no" webapp/target/webapp.war ubuntu@54.219.35.228:/opt/tomcat/webapps'
-//         }
-//       }
-//     }
+    stage('Deploy to tomcat') {
+      steps {
+        sshagent(['tomcat-server-details']) {
+        sh 'scp -o "StrictHostKeyChecking=no" /var/lib/jenkins/workspace/maven_job/target/demo-application-0.0.1-SNAPSHOT.jar ubuntu@54.153.63.193:/opt/tomcat/webapps'
+        }
+      }
+    }
     // stage('Deploy to tomcat') {
     //   steps {
     //        sh 'sudo scp -i demo.pem -o "StrictHostKeyChecking=no" webapp/target/webapp.war ubuntu@65.0.3.198:/opt/tomcat/webapps'
